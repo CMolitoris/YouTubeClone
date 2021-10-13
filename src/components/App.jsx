@@ -21,7 +21,7 @@ class App extends Component {
 
   render() { 
     return ( 
-      <div className='container-fluid'>
+      <div className='container-fluid app-base'>
         <div className='row'>
           <Header />
           <VideoTitle />

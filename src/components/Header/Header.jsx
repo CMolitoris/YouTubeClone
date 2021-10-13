@@ -1,4 +1,5 @@
 import React from 'react';
+import './Header.css'
 import SearchBar from './SearchBar/SearchBar';
 
 
@@ -6,12 +7,12 @@ const Header = () => {
 
 
     return ( 
-        <div className='row'>
-            <div className='col-2'></div>
-            <div className='col-8 text-center'>
+        <div className='row header-color header-style'>
+            <div className='col'></div>
+            <div className='col text-center'>
                 <SearchBar />
             </div>
-            <div className='col-2'></div>
+            <div className='col'></div>
         </div>
      );
 }

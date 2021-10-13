@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css'
+import Header from './Header/Header';
 
 
 class App extends Component {
@@ -14,13 +15,15 @@ class App extends Component {
   }
 
   getVideo = () => {
-
+    
   }
-  
+
   render() { 
     return ( 
-      <div>
-        Hello World
+      <div className='container-fluid'>
+        <div className='row'>
+          <Header />
+        </div>
       </div>
      );
   }

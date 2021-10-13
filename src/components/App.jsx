@@ -1,12 +1,29 @@
-import React from 'react';
-import './App.css';
+import React, { Component } from 'react';
+import './App.css'
 
-function App() {
-  return (
-    <div className="App">
-      Hello World
-    </div>
-  );
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {  }
+  }
+
+
+  componentDidMount = () => {
+
+  }
+
+  getVideo = () => {
+
+  }
+  
+  render() { 
+    return ( 
+      <div>
+        Hello World
+      </div>
+     );
+  }
 }
-
+ 
 export default App;

@@ -1,9 +1,9 @@
 import React from 'react';
 
 
-function SearchBar() {
+const SearchBar = () => {
 
-    
+
     return ( 
         <div className='col'>
             --Search Bar--

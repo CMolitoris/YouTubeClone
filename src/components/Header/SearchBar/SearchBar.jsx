@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
 
 
-const SearchBar = () => {
+const SearchBar = (props) => {
     const [search, setSearch] = useState({
         searchInput: ''
     })
@@ -18,6 +18,7 @@ const SearchBar = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        props.getVideo()
     }
 
     return ( 
@@ -30,7 +31,7 @@ const SearchBar = () => {
                     <Form.Control className='form-control' type="text" name='searchInput'  placeholder="Search..." onChange={handleChange}/>
                 </Col>
                 <Col>
-                    <Button type='submit' className='btn btn-sm btn-danger'>Logo</Button>
+                    <Button type='submit' className='btn btn-sm btn-danger'>logo</Button>
                 </Col>
             </Form>
         </div>

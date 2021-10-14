@@ -3,12 +3,12 @@ import './Header.css'
 import SearchBar from './SearchBar/SearchBar';
 
 
-const Header = () => {
+const Header = (props) => {
 
 
     return ( 
             <div className='header-color header-style'>
-                <SearchBar />
+                <SearchBar getVideo={props.getVideo}/>
             </div>
      );
 }

@@ -3,12 +3,13 @@ import './App.css'
 import Header from './Header/Header';
 import VideoPlayer from './VideoPlayer/VideoPlayer';
 import VideoTitle from './VideoTitle/VideoTitle';
+import SearchResults from './SearchResults/SearchResults';
 
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {  }
+    this.state = {}
   }
 
 
@@ -24,21 +25,22 @@ class App extends Component {
     return ( 
       <div className='container-fluid app-base'>
         <div className='row'>
-          <Header />
+          <Header getVideo={this.getVideo} />
+          <SearchResults />
         </div>
         <div className='row'>
           <VideoTitle />
         </div>
         <div className='row'>
-          <div className='col'>
+          {/* <div className='col'>
           Playlist
-          </div>
-          <div className='col'>
+          </div> */}
+          <div>
             <VideoPlayer />
           </div>
-          <div className='col'>
+          {/* <div className='col'>
           recommended
-          </div>
+          </div> */}
         </div>
         <div className='row'>
           Comment Section

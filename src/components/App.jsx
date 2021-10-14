@@ -56,7 +56,7 @@ class App extends Component {
       <div className='container-fluid app-base'>
 
         <div className='row'>
-          <Header getVideo={this.getVideo} />
+          <Header onSearch={this.onSearch} />
           <SearchResults />
         </div>
 
@@ -70,7 +70,6 @@ class App extends Component {
           </div>
 
           <div className='col'>
-            <Search onSearch={this.onSearch}/>
             <VideoplayerWindow videoId={this.state.selectedVideoId} />
           </div>
          
@@ -83,7 +82,7 @@ class App extends Component {
         <div className='row'>
           Comment Section
         </div>
-        
+
       </div>
       
      );

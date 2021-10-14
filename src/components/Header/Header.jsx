@@ -8,7 +8,7 @@ const Header = (props) => {
 
     return ( 
             <div className='header-color header-style'>
-                <SearchBar getVideo={props.getVideo}/>
+                <SearchBar onSearch={props.onSearch}/>
             </div>
      );
 }

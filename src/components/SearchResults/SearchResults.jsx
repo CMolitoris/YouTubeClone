@@ -17,7 +17,7 @@ const SearchResults = (props) => {
             <Offcanvas.Title>Search Results</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-                something
+                Example
             </Offcanvas.Body>
         </Offcanvas>
         </>

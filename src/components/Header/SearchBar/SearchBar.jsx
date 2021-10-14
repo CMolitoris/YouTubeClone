@@ -21,7 +21,7 @@ const SearchBar = () => {
     }
 
     return ( 
-        <Col>
+        <div>
             <Form onSubmit={handleSubmit} className='get'>
                 <Col>
                     <Form.Label>Logo</Form.Label>
@@ -32,9 +32,8 @@ const SearchBar = () => {
                 <Col>
                     <Button type='submit' className='btn btn-sm btn-danger'>Logo</Button>
                 </Col>
-                
             </Form>
-        </Col>
+        </div>
      );
 }
 

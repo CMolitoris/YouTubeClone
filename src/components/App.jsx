@@ -2,10 +2,8 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import './App.css'
 import Header from './Header/Header';
-import VideoPlayer from './VideoPlayer/VideoPlayer';
 import VideoTitle from './VideoTitle/VideoTitle';
 import YouTube from './YouTubeAPI/YouTube'
-import Search from './Search/Search';
 import VideoList from './VideoList/VideoList';
 import VideoplayerWindow from './VideoPlayerWindow/VideoPlayerWindow';
 
@@ -17,14 +15,19 @@ class App extends Component {
     super(props);
     this.state = { 
       videoMetaInfo: [],
-      selectedVideoId: null
+      selectedVideoId: null,
+      selectedVideoTitle: null,
+      selectedVideoChannelTitle: null
      }
   }
 
-  onVideoSelected = (videoId) => {
+  onVideoSelected = (videoId,title,channelTitle) => {
     this.setState({
-      selectedVideoId: videoId
+      selectedVideoId: videoId,
+      selectedVideoTitle: title,
+      selectedVideoChannelTitle: channelTitle
     })
+    console.log(this.state)
 
   }
 
@@ -36,7 +39,9 @@ class App extends Component {
     })
     this.setState({
       videoMetaInfo: response.data.items,
-      selectedVideoId: response.data.items[0].id.videoId
+      selectedVideoId: response.data.items[0].id.videoId,
+      selectedVideoTitle: response.data.items[0].snippet.channelTitle,
+      selectedVideoChannelTitle: response.data.items[0].snippet.title
     })
     console.log(response)
     console.log(this.state)
@@ -61,7 +66,7 @@ class App extends Component {
         </div>
 
         <div className='row'>
-          <VideoTitle /> 
+          <VideoTitle title={this.state.selectedVideoTitle} channelName={this.state.selectedVideoChannelTitle} /> 
         </div>
 
         <div className='row'>

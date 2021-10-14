@@ -1,7 +1,7 @@
 import React from "react";
 // import "./VideoPlayer.css";
-function selectVideo(videoIdObj, onVideoSelected) {
-  onVideoSelected(videoIdObj.videoId);
+function selectVideo(videoIdObj, onVideoSelected,title,channelTitle) {
+  onVideoSelected(videoIdObj.videoId,title,channelTitle);
 }
 
 function getCss(imageurl) {
@@ -21,7 +21,7 @@ function constructVideoTitles(vidoesData, onVideoSelected) {
       <div
         className="video"
         key={index}
-        onClick={() => selectVideo(id, onVideoSelected)}>
+        onClick={() => selectVideo(id, onVideoSelected,snippet.title,snippet.channelTitle)}>
         <div style={getCss(snippet.thumbnails.high.url)} key={index} />
         <p className="title">{snippet.title}</p>
       </div>

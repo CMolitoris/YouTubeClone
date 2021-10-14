@@ -70,18 +70,18 @@ class App extends Component {
         </div>
 
         <div className='row'>
-          <div className='col'>
+          {/* <div className='col'>
             Playlist
-          </div>
+          </div> */}
 
           <div className='col'>
-            <VideoplayerWindow videoId={this.state.selectedVideoId} />
+            <VideoPlayer videoId={this.state.selectedVideoId} />
           </div>
          
-          <div className='col'>
+          {/* <div className='col'>
             recommended
             <VideoList onVideoSelected={this.onVideoSelected} data={this.state.videoMetaInfo}/>
-          </div>
+          </div> */}
         </div>
         
         <div className='row'>

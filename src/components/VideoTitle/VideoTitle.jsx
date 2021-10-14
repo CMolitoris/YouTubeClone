@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import './VideoTitle.css';
 import Col from 'react-bootstrap/Col'
 

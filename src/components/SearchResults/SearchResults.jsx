@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button'
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import VideoList from '../VideoList/VideoList';
-import VideoPlayer from '../VideoPlayer/VideoPlayer';
+
 
 const SearchResults = (props) => {
     const [show, setShow] = useState(false);
@@ -25,7 +25,7 @@ const SearchResults = (props) => {
                         {/* <h3 style={{ textAlign: "center", fontSize: "18px", fontWeight: "bold" }}>
                             Search Results
                         </h3> */}
-                        <VideoPlayer data={props.data} onVideoSelected={props.onVideoSelected} />
+                        <VideoList data={props.data} onVideoSelected={props.onVideoSelected} />
                     </div>
                 </div>
             </Offcanvas.Body>

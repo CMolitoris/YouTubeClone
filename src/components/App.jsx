@@ -1,11 +1,10 @@
-import axios from 'axios';
 import React, { Component } from 'react';
 import './App.css'
 import Header from './Header/Header';
 import VideoTitle from './VideoTitle/VideoTitle';
 import YouTube from './YouTubeAPI/YouTube'
-import VideoList from './VideoList/VideoList';
-import VideoplayerWindow from './VideoPlayerWindow/VideoPlayerWindow';
+import VideoPlayer from './VideoPlayer/VideoPlayer'
+
 
 import SearchResults from './SearchResults/SearchResults';
 
@@ -37,6 +36,7 @@ class App extends Component {
         q:keyword
       }
     })
+
     this.setState({
       videoMetaInfo: response.data.items,
       selectedVideoId: response.data.items[0].id.videoId,
@@ -75,7 +75,7 @@ class App extends Component {
           </div> */}
 
           <div className='col'>
-            <VideoPlayer videoId={this.state.selectedVideoId} />
+            <VideoPlayer onVideoSelected={this.onVideoSelected} data={this.state.videoMetaInfo} videoId={this.state.selectedVideoId} />
           </div>
          
           {/* <div className='col'>

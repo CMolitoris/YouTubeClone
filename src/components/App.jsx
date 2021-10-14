@@ -62,7 +62,7 @@ class App extends Component {
 
         <div className='row'>
           <Header onSearch={this.onSearch} />
-          <SearchResults />
+          <SearchResults onVideoSelected={this.onVideoSelected} data={this.state.videoMetaInfo}/>
         </div>
 
         <div className='row'>

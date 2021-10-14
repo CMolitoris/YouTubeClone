@@ -24,7 +24,23 @@ class App extends Component {
       <div className='container-fluid app-base'>
         <div className='row'>
           <Header />
+        </div>
+        <div className='row'>
           <VideoTitle />
+        </div>
+        <div className='row'>
+          <div className='col'>
+          Playlist
+          </div>
+          <div className='col'>
+          Video Player
+          </div>
+          <div className='col'>
+          recommended
+          </div>
+        </div>
+        <div className='row'>
+          Comment Section
         </div>
       </div>
      );

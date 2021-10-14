@@ -5,9 +5,9 @@ const VideoTitle = () => {
 
 
     return ( 
-        <div className='col text-center'>
-            Video Title 
-        </div>
+            <div className='col text-center'>
+                --Video Title-- 
+            </div>
     );
 }
 

@@ -7,13 +7,9 @@ const Header = () => {
 
 
     return ( 
-        <div className='row header-color header-style'>
-            <div className='col'></div>
-            <div className='col text-center'>
+            <div className='col text-center header-color header-style'>
                 <SearchBar />
             </div>
-            <div className='col'></div>
-        </div>
      );
 }
 

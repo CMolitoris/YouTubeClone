@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css'
 import Header from './Header/Header';
+import VideoPlayer from './VideoPlayer/VideoPlayer';
 import VideoTitle from './VideoTitle/VideoTitle';
 
 
@@ -33,7 +34,7 @@ class App extends Component {
           Playlist
           </div>
           <div className='col'>
-          Video Player
+            <VideoPlayer />
           </div>
           <div className='col'>
           recommended

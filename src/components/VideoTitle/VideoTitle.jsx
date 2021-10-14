@@ -1,13 +1,15 @@
 import React from 'react';
+import './VideoTitle.css';
+import Col from 'react-bootstrap/Col'
 
 
-const VideoTitle = () => {
+const VideoTitle = (props) => {
 
 
     return ( 
-            <div className='col text-center'>
-                --Video Title-- 
-            </div>
+            <Col className='text-center title-spacing'>
+               Video_Title Logo Creater_Name
+            </Col>
     );
 }
 

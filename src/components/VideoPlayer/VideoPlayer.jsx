@@ -1,17 +1,3 @@
-// import React from 'react';
-
-
-// function VideoPlayer() {
-//     return ( 
-//         <div className='col text-center'>
-//             VIDEO PLAYER HERE
-//         </div>
-
-//      );
-// }
-
-// export default VideoPlayer;
-
 import React from "react";
 // import "./VideoPlayer.css";
 function selectVideo(videoIdObj, onVideoSelected) {

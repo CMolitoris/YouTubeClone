@@ -9,6 +9,7 @@ import Search from './Search/Search';
 import VideoList from './VideoList/VideoList';
 import VideoplayerWindow from './VideoPlayerWindow/VideoPlayerWindow';
 
+import SearchResults from './SearchResults/SearchResults';
 
 
 class App extends Component {
@@ -53,33 +54,38 @@ class App extends Component {
   render() { 
     return ( 
       <div className='container-fluid app-base'>
-        <div className='row'>
 
-          <Header />
-        </div>
         <div className='row'>
-          <VideoTitle />
-          
+          <Header getVideo={this.getVideo} />
+          <SearchResults />
         </div>
+
+        <div className='row'>
+          <VideoTitle /> 
+        </div>
+
         <div className='row'>
           <div className='col'>
-          Playlist
+            Playlist
           </div>
+
           <div className='col'>
             <Search onSearch={this.onSearch}/>
-            {/* <VideoPlayer /> */}
             <VideoplayerWindow videoId={this.state.selectedVideoId} />
-            
           </div>
+         
           <div className='col'>
-          recommended
-          <VideoList onVideoSelected={this.onVideoSelected} data={this.state.videoMetaInfo}/>
+            recommended
+            <VideoList onVideoSelected={this.onVideoSelected} data={this.state.videoMetaInfo}/>
           </div>
         </div>
+        
         <div className='row'>
           Comment Section
         </div>
+        
       </div>
+      
      );
   }
 }

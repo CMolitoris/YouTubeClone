@@ -13,7 +13,7 @@ const RecommendedVideos = (props) => {
     
     return (
         <>
-        <Button variant="primary" onClick={handleShow}>Recommended</Button>
+        <Button variant="dark" onClick={handleShow}><i class="bi bi-chevron-double-right"></i></Button>
     
         <Offcanvas show={show} onHide={handleClose} placement='end' id='off-canvas'>
             <Offcanvas.Header closeButton className='header shadow'>

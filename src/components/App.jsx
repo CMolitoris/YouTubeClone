@@ -92,8 +92,7 @@ class App extends Component {
 
         <div className='row'>
           <Header onSearch={this.onSearch} />
-          <SearchResults onVideoSelected={this.onVideoSelected} data={this.state.videoMetaInfo} />
-          <RecommendedVideos onVideoSelected={this.onVideoSelected} data={this.state.relatedVideosMetaInfo} />
+          
         </div>
 
         <div className='row'>
@@ -101,13 +100,17 @@ class App extends Component {
         </div>
 
         <div className='row my-5 bg-dark'>
-          {/* <div className='col'>
-            Playlist
-          </div> */}
+          <div className='col'>
+            <SearchResults onVideoSelected={this.onVideoSelected} data={this.state.videoMetaInfo} />
+          </div>
 
 
           <div>
             <VideoPlayer videoId={this.state.selectedVideoId} />
+          </div>
+
+          <div className='col'>
+            <RecommendedVideos onVideoSelected={this.onVideoSelected} data={this.state.relatedVideosMetaInfo} />
           </div>
         
         </div>

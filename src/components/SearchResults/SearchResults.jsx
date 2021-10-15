@@ -13,7 +13,7 @@ const SearchResults = (props) => {
     
     return (
         <>
-        <Button variant="primary" onClick={handleShow}>Search</Button>
+        <Button variant="dark" onClick={handleShow}><i class="bi bi-chevron-double-left">Search Results</i></Button>
     
         <Offcanvas show={show} onHide={handleClose} id='off-canvas'>
             <Offcanvas.Header closeButton className='header shadow'>

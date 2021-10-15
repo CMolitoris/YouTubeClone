@@ -8,7 +8,7 @@ const Header = (props) => {
 
 
     return ( 
-            <div className='header-color header-style'>
+            <div className='header-color header-style shadow'>
                 <SearchBar onSearch={props.onSearch}/>
             </div>
      );

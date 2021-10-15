@@ -70,9 +70,13 @@ class App extends Component {
           {/* <VideoTitle title={this.state.selectedVideoTitle} channelName={this.state.selectedVideoChannelTitle} />  */}
         </div>
 
-        <div className='row'>
-        
-          <div className='col'>
+        <div className='row my-5 bg-dark'>
+          {/* <div className='col'>
+            Playlist
+          </div> */}
+
+
+          <div>
             <VideoPlayer videoId={this.state.selectedVideoId} />
           </div>
         

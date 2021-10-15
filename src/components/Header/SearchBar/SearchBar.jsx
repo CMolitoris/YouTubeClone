@@ -27,19 +27,18 @@ class SearchBar extends Component {
     }
 
     render() { 
-        return ( 
-            
+        return (   
         <div>
             <Form onSubmit={this.onSubmit} className='get'>
-                <Col>
+                <div className='col-2'>
                     <Form.Label>Logo</Form.Label>
-                </Col>
-                <Col>
+                </div>
+                <div className='col-8'>
                     <Form.Control onChange={this.onChange} value={this.state.title} type="text" name='searchInput'  placeholder="Search..."/>
-                </Col>
-                <Col>
+                </div>
+                <div className='col-2'>
                     <Button type='submit' className='btn btn-sm btn-danger'>logo</Button>
-                </Col>
+                </div>
             </Form>
         </div>
          );

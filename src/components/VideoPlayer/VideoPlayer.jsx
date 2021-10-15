@@ -1,6 +1,6 @@
 import React from "react";
 import "./VideoPlayer.css";
-
+import Col from 'react-bootstrap/Col';
 
 
 const VideoPlayer = ({ videoId }) => {
@@ -12,13 +12,13 @@ const VideoPlayer = ({ videoId }) => {
     );
   }
   return (
-    <div className="video-player">
+    <Col className="video-player text-center py-2">
       <iframe
         title={videoId}
         className="video-iframe"
         src={`https://www.youtube.com/embed/${videoId}`}
       />
-    </div>
+    </Col>
   );
 };
 export default VideoPlayer;

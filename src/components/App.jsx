@@ -6,6 +6,8 @@ import VideoPlayer from './VideoPlayer/VideoPlayer'
 import SearchResults from './SearchResults/SearchResults';
 import RecommendedVideos from './RecommendedVideos/RecommendedVideos';
 import axios from 'axios';
+import CommentList from './CommentList/CommentList';
+import CreateComment from './CreateComment/CreateComment';
 // import RecommendedVideoCarousal from './RecommendedVideoCarousal/RecommendedVideoCarousal';
 
 
@@ -16,7 +18,8 @@ class App extends Component {
     this.state = { 
       videoMetaInfo: [],
       selectedVideoId: null,
-      relatedVideosMetaInfo: []
+      relatedVideosMetaInfo: [],
+      comments: []
       
      }
   }
@@ -26,6 +29,7 @@ class App extends Component {
       selectedVideoId: videoId,
     })
     this.getRelatedVideos(videoId)
+    this.getComments(videoId)
   }
 
   onSearch = async (keyword) => {
@@ -41,12 +45,35 @@ class App extends Component {
       
     })
     this.getRelatedVideos(this.state.selectedVideoId)
-    console.log(this.state)
+    this.getComments(this.state.selectedVideoId)
+    //console.log(this.state)
+  }
+
+  getComments = async (videoId) => {
+    let response = await axios.get('http://127.0.0.1:8000/comments/')
+    let filteredComments = response.data.filter((comment)=>{
+      return comment.videoId ===videoId;
+    })
+    console.log(response.data)
+    console.log(filteredComments)
+    this.setState({
+      comments: filteredComments
+    })
+  }
+
+  createComment = async (comment) => {
+    let response = await axios.post('http://127.0.0.1:8000/comments/',comment)
+    let newComments = this.state.comments;
+    newComments.push(response.data);
+    console.log(response)
+    this.setState({
+      comments: newComments
+    })
   }
 
 
   componentDidMount = () => {
-
+    this.getComments(this.state.selectedVideoId)
   }
 
   getRelatedVideos = async (videoId) => {
@@ -55,7 +82,7 @@ class App extends Component {
     this.setState({
       relatedVideosMetaInfo: response.data.items
     })
-    console.log(this.state.relatedVideosMetaInfo)
+    //console.log(this.state.relatedVideosMetaInfo)
 
   }
 
@@ -86,7 +113,10 @@ class App extends Component {
         </div>
         
         <div className='row'>
+          
+          <CreateComment createComment={this.createComment} videoId={this.state.selectedVideoId}/>
           Comment Section
+          <CommentList comments={this.state.comments}/>
         </div>
 
       </div>

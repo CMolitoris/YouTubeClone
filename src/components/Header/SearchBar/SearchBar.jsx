@@ -1,7 +1,8 @@
 
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import Col from 'react-bootstrap/Col'
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 import React, { Component } from 'react';
 
@@ -27,20 +28,20 @@ class SearchBar extends Component {
     }
 
     render() { 
-        return (   
-        <div>
+        return (
             <Form onSubmit={this.onSubmit} className='get'>
-                <div className='col-2'>
-                    <Form.Label>Logo</Form.Label>
-                </div>
-                <div className='col-8'>
-                    <Form.Control onChange={this.onChange} value={this.state.title} type="text" name='searchInput'  placeholder="Search..."/>
-                </div>
-                <div className='col-2'>
-                    <Button type='submit' className='btn btn-sm btn-danger'>logo</Button>
-                </div>
+                <Form.Group as={Row} className='my-1' controlID='searchBar'>
+                    <Form.Label column>
+                        Logo
+                    </Form.Label>
+                    <Col>
+                        <Form.Control onChange={this.onChange} value={this.state.title} type="text" name='searchInput'  placeholder="Search..."/>
+                    </Col>
+                    <Col>
+                        <Button type='submit' className='btn btn-sm btn-danger'><i class="bi bi-search"></i></Button>
+                    </Col>
+                </Form.Group>
             </Form>
-        </div>
          );
     }
 }

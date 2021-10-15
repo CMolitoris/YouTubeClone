@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './App.css'
 import Header from './Header/Header';
-import VideoTitle from './VideoTitle/VideoTitle';
 import YouTube from './YouTubeAPI/YouTube'
 import VideoPlayer from './VideoPlayer/VideoPlayer'
 import SearchResults from './SearchResults/SearchResults';
+import RecommendedVideos from './RecommendedVideos/RecommendedVideos';
 import axios from 'axios';
+// import RecommendedVideoCarousal from './RecommendedVideoCarousal/RecommendedVideoCarousal';
+
 
 
 class App extends Component {
@@ -51,7 +53,7 @@ class App extends Component {
     const KEY = 'AIzaSyDP9AghNJkgynFq0oAPDKmt6bE0dWUzjDg';
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${videoId}&type=video&key=${KEY}`)
     this.setState({
-      relatedVideosMetaInfo: response.data
+      relatedVideosMetaInfo: response.data.items
     })
     console.log(response.data)
 
@@ -63,7 +65,8 @@ class App extends Component {
 
         <div className='row'>
           <Header onSearch={this.onSearch} />
-          <SearchResults onVideoSelected={this.onVideoSelected} data={this.state.videoMetaInfo}/>
+          <SearchResults onVideoSelected={this.onVideoSelected} data={this.state.videoMetaInfo} />
+          <RecommendedVideos onVideoSelected={this.onVideoSelected} data={this.state.relatedVideosMetaInfo} />
         </div>
 
         <div className='row'>

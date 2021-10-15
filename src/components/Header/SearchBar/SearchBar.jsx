@@ -38,7 +38,7 @@ class SearchBar extends Component {
                         <Form.Control onChange={this.onChange} value={this.state.title} type="text" name='searchInput'  placeholder="Search..."/>
                     </Col>
                     <Col>
-                        <Button type='submit' className='btn btn-sm btn-danger'><i class="bi bi-search"></i></Button>
+                        <Button type='submit' className='btn btn-md btn-danger shadow'><i class="bi bi-search"></i></Button>
                     </Col>
                 </Form.Group>
             </Form>

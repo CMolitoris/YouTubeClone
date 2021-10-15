@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './App.css'
 import Header from './Header/Header';
-import VideoTitle from './VideoTitle/VideoTitle';
 import YouTube from './YouTubeAPI/YouTube'
 import VideoPlayer from './VideoPlayer/VideoPlayer'
 import SearchResults from './SearchResults/SearchResults';
+import RecommendedVideos from './RecommendedVideos/RecommendedVideos';
 import axios from 'axios';
+// import RecommendedVideoCarousal from './RecommendedVideoCarousal/RecommendedVideoCarousal';
+
 
 
 class App extends Component {
@@ -63,7 +65,8 @@ class App extends Component {
 
         <div className='row'>
           <Header onSearch={this.onSearch} />
-          <SearchResults onVideoSelected={this.onVideoSelected} data={this.state.videoMetaInfo}/>
+          <SearchResults onVideoSelected={this.onVideoSelected} data={this.state.videoMetaInfo} />
+          <RecommendedVideos onVideoSelected={this.onVideoSelected} data={this.state.relatedVideosMetaInfo} />
         </div>
 
         <div className='row'>

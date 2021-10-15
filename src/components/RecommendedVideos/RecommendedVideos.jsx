@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button'
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import VideoList from '../VideoList/VideoList';
-import './SearchResults.css'
+import './RecommendedVideos.css'
 
 
-const SearchResults = (props) => {
+const RecommendedVideos = (props) => {
     const [show, setShow] = useState(false);
     
     const handleClose = () => setShow(false);
@@ -13,11 +13,11 @@ const SearchResults = (props) => {
     
     return (
         <>
-        <Button variant="primary" onClick={handleShow}>Search</Button>
+        <Button variant="primary" onClick={handleShow}>Recommended</Button>
     
-        <Offcanvas show={show} onHide={handleClose} id='off-canvas'>
+        <Offcanvas show={show} onHide={handleClose} placement='end' id='off-canvas'>
             <Offcanvas.Header closeButton className='header shadow'>
-            <Offcanvas.Title><h3>Search Results</h3></Offcanvas.Title>
+            <Offcanvas.Title><h3>Recommended</h3></Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
                 
@@ -35,4 +35,4 @@ const SearchResults = (props) => {
     );
     }
 
-export default SearchResults;
+export default RecommendedVideos;

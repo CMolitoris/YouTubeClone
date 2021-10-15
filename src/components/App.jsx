@@ -51,9 +51,9 @@ class App extends Component {
     const KEY = 'AIzaSyDP9AghNJkgynFq0oAPDKmt6bE0dWUzjDg';
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${videoId}&type=video&key=${KEY}`)
     this.setState({
-      relatedVideosMetaInfo: response.data
+      relatedVideosMetaInfo: response.data.items
     })
-    console.log(response.data)
+    console.log(this.state.relatedVideosMetaInfo)
 
   }
 

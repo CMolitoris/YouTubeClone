@@ -4,9 +4,8 @@ import Header from './Header/Header';
 import VideoTitle from './VideoTitle/VideoTitle';
 import YouTube from './YouTubeAPI/YouTube'
 import VideoPlayer from './VideoPlayer/VideoPlayer'
-
-
 import SearchResults from './SearchResults/SearchResults';
+import axios from 'axios';
 
 
 class App extends Component {
@@ -15,19 +14,16 @@ class App extends Component {
     this.state = { 
       videoMetaInfo: [],
       selectedVideoId: null,
-      selectedVideoTitle: null,
-      selectedVideoChannelTitle: null
+      relatedVideosMetaInfo: []
+      
      }
   }
 
-  onVideoSelected = (videoId,title,channelTitle) => {
+  onVideoSelected = (videoId) => {
     this.setState({
       selectedVideoId: videoId,
-      selectedVideoTitle: title,
-      selectedVideoChannelTitle: channelTitle
     })
-    console.log(this.state)
-
+    this.getRelatedVideos(videoId)
   }
 
   onSearch = async (keyword) => {
@@ -40,10 +36,9 @@ class App extends Component {
     this.setState({
       videoMetaInfo: response.data.items,
       selectedVideoId: response.data.items[0].id.videoId,
-      selectedVideoTitle: response.data.items[0].snippet.channelTitle,
-      selectedVideoChannelTitle: response.data.items[0].snippet.title
+      
     })
-    console.log(response)
+    this.getRelatedVideos(this.state.selectedVideoId)
     console.log(this.state)
   }
 
@@ -52,7 +47,13 @@ class App extends Component {
 
   }
 
-  getVideo = () => {
+  getRelatedVideos = async (videoId) => {
+    const KEY = 'AIzaSyDP9AghNJkgynFq0oAPDKmt6bE0dWUzjDg';
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${videoId}&type=video&key=${KEY}`)
+    this.setState({
+      relatedVideosMetaInfo: response.data
+    })
+    console.log(response.data)
 
   }
 
@@ -66,22 +67,15 @@ class App extends Component {
         </div>
 
         <div className='row'>
-          <VideoTitle title={this.state.selectedVideoTitle} channelName={this.state.selectedVideoChannelTitle} /> 
+          {/* <VideoTitle title={this.state.selectedVideoTitle} channelName={this.state.selectedVideoChannelTitle} />  */}
         </div>
 
         <div className='row'>
-          {/* <div className='col'>
-            Playlist
-          </div> */}
-
+        
           <div className='col'>
-            <VideoPlayer onVideoSelected={this.onVideoSelected} data={this.state.videoMetaInfo} videoId={this.state.selectedVideoId} />
+            <VideoPlayer videoId={this.state.selectedVideoId} />
           </div>
-         
-          {/* <div className='col'>
-            recommended
-            <VideoList onVideoSelected={this.onVideoSelected} data={this.state.videoMetaInfo}/>
-          </div> */}
+        
         </div>
         
         <div className='row'>

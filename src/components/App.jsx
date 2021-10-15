@@ -19,7 +19,8 @@ class App extends Component {
       videoMetaInfo: [],
       selectedVideoId: null,
       relatedVideosMetaInfo: [],
-      comments: []
+      comments: [],
+      replies: []
       
      }
   }
@@ -30,6 +31,7 @@ class App extends Component {
     })
     this.getRelatedVideos(videoId)
     this.getComments(videoId)
+    this.getReplies()
   }
 
   onSearch = async (keyword) => {
@@ -46,6 +48,7 @@ class App extends Component {
     })
     this.getRelatedVideos(this.state.selectedVideoId)
     this.getComments(this.state.selectedVideoId)
+    this.getReplies()
     //console.log(this.state)
   }
 
@@ -54,11 +57,20 @@ class App extends Component {
     let filteredComments = response.data.filter((comment)=>{
       return comment.videoId ===videoId;
     })
-    console.log(response.data)
     console.log(filteredComments)
     this.setState({
       comments: filteredComments
     })
+    
+  }
+
+  getReplies = async () => {
+    let response = await axios.get('http://127.0.0.1:8000/replies/')
+    console.log(response.data)
+    this.setState({
+      replies: response.data
+    })
+    
   }
 
   createComment = async (comment) => {
@@ -71,13 +83,23 @@ class App extends Component {
     })
   }
 
+  createReply = async (reply) => {
+    let response = await axios.post('http://127.0.0.1:8000/replies/',reply)
+    let newReplies = this.state.replies;
+    newReplies.push(response.data);
+    console.log(response)
+    this.setState({
+      replies: newReplies
+    })
+  }
+
 
   componentDidMount = () => {
     this.getComments(this.state.selectedVideoId)
   }
 
   getRelatedVideos = async (videoId) => {
-    const KEY = 'AIzaSyDP9AghNJkgynFq0oAPDKmt6bE0dWUzjDg';
+    const KEY = 'AIzaSyAEg67dDzltMnI9LlwTB2dl2VgF1y6ymDI';
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${videoId}&type=video&key=${KEY}`)
     this.setState({
       relatedVideosMetaInfo: response.data.items
@@ -115,8 +137,8 @@ class App extends Component {
         <div className='row'>
           
           <CreateComment createComment={this.createComment} videoId={this.state.selectedVideoId}/>
-          Comment Section
-          <CommentList comments={this.state.comments}/>
+          Comment Section:
+          <CommentList createReply={this.createReply} replies={this.state.replies} comments={this.state.comments}/>
         </div>
 
       </div>

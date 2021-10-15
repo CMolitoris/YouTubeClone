@@ -73,7 +73,8 @@ class App extends Component {
     
   }
 
-  createComment = async (comment) => {
+  createComment = async (comment,videoId) => {
+    comment.videoId = videoId
     let response = await axios.post('http://127.0.0.1:8000/comments/',comment)
     let newComments = this.state.comments;
     newComments.push(response.data);
@@ -132,7 +133,7 @@ class App extends Component {
         <div className='row'>
           
           <CreateComment createComment={this.createComment} videoId={this.state.selectedVideoId}/>
-          Comment Section:
+          Comments:
           <CommentList createReply={this.createReply} replies={this.state.replies} comments={this.state.comments}/>
         </div>
 

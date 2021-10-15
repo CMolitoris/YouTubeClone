@@ -6,7 +6,7 @@ class CreateComment extends Component {
         this.state = { 
             username: '',
             body: '',
-            videoId: this.props.videoId
+            videoId: ''
          }
     }
 
@@ -18,7 +18,14 @@ class CreateComment extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        this.props.createComment(this.state)
+        console.log(this.state)
+        this.props.createComment(this.state, this.props.videoId)
+        this.setState({
+            username: '',
+            body: '',
+            videoId: ''
+        })
+    
     }
 
     render() { 

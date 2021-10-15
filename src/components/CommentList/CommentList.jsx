@@ -33,7 +33,6 @@ class CommentList extends Component {
                             <>
                                 <li key={index}>{comment.username}: {comment.body}</li>
                                 <CreateReply createReply={this.props.createReply} commentId={comment.id}/>
-                                {/* <ReplyList getReplies={props.getReplies} replies={props.replies}/>  */}
                                 {this.filterReplies(comment.id)}
                             </>  
                         )

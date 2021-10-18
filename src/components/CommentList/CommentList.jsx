@@ -32,12 +32,12 @@ const CommentList = (props) => {
                     <ul>
                         {props.comments.map((comment,index)=>{
                             return (
-                                <>
-                                    <li key={index}>{comment.username}: {comment.body}</li>
+                                <div>
+                                    <li key={index}>{comment.username}: {comment.body} | Likes: {comment.likes} <button onClick={() => props.likeComment(comment)}>Like</button></li> 
                                     <CreateReply createReply={props.createReply} commentId={comment.id}/>
                                     {/* {this.filterReplies(comment.id)} */}
                                     <ReplyList replies={props.replies} commentId={comment.id}/>
-                                </>  
+                                </div>  
                             )
                         })}
                     </ul>

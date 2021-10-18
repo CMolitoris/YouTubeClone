@@ -25,14 +25,14 @@ class App extends Component {
      }
   }
 
-  onVideoSelected = (videoId,description) => {
+  onVideoSelected = (videoId) => {
     this.setState({
-      selectedVideoId: videoId,
-      selectedVideoDescription: description
+      selectedVideoId: videoId
     })
     this.getRelatedVideos(videoId)
     this.getComments(videoId)
     this.getReplies()
+    this.getVideoDescription(videoId)
   }
 
   onSearch = async (keyword) => {
@@ -45,12 +45,11 @@ class App extends Component {
     this.setState({
       videoMetaInfo: response.data.items,
       selectedVideoId: response.data.items[0].id.videoId,
-      selectedVideoDescription: response.data.items[0].snippet.description
     })
     this.getRelatedVideos(this.state.selectedVideoId)
     this.getComments(this.state.selectedVideoId)
     this.getReplies()
-    this.getVideoDescription(this.selectedVideoId)
+    this.getVideoDescription(this.state.selectedVideoId)
     console.log(this.state)
   }
 
@@ -112,8 +111,8 @@ class App extends Component {
   }
 
   getRelatedVideos = async (videoId) => {
-    const KEY = 'AIzaSyAEg67dDzltMnI9LlwTB2dl2VgF1y6ymDI';
-    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${videoId}&type=video&key=${KEY}`)
+    const KEY = 'AIzaSyAYeKsezkaeMiwJe_1b3ayMyQ8zHhfw_3I';
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${videoId}&type=video&key=${KEY}/`)
     this.setState({
       relatedVideosMetaInfo: response.data.items
     })
@@ -121,9 +120,12 @@ class App extends Component {
   }
 
   getVideoDescription = async (videoId) => {
-    const KEY = 'AIzaSyAEg67dDzltMnI9LlwTB2dl2VgF1y6ymDI';
+    const KEY = 'AIzaSyAYeKsezkaeMiwJe_1b3ayMyQ8zHhfw_3I';
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${KEY}`)
-    console.log(response)
+    // console.log(response)
+    this.setState({
+      selectedVideoDescription: response.data.items[0].snippet.description
+    })
   }
 
 

@@ -20,6 +20,7 @@ class CreateReply extends Component {
         event.preventDefault()
         console.log(this.state)
         this.props.createReply(this.state)
+        this.setState({body: ''})
     }
 
     render() { 

@@ -93,10 +93,12 @@ class App extends Component {
   }
 
   likeComment = async (comment) => {
-    comment.likes += 1;
+    
+    console.log(comment)
     let tempComments = this.state.comments;
-    let commentIndex = tempComments.findIndex(comment);
-    let response = await axios.put(`http://127.0.0.1:8000/comments/${comment.id}`,comment)
+    // let comment = tempComments.find(element => element.id === commentId)
+    let commentIndex = tempComments.indexOf(comment);
+    let response = await axios.patch(`http://127.0.0.1:8000/comments/${comment.id}/`, {likes: comment.likes+=1})
     tempComments.splice(commentIndex,1,response.data);
     this.setState({comments: tempComments})
 
@@ -146,8 +148,8 @@ class App extends Component {
         </div>
 
         <div className='row'>
-          <div className='col-auto mx-auto'>
-            <CommentList createReply={this.createReply} replies={this.state.replies} comments={this.state.comments}/>
+          <div class='col-auto mx-auto'>
+            <CommentList likeComment={this.likeComment} createReply={this.createReply} replies={this.state.replies} comments={this.state.comments}/>
           </div>
         </div>  
         

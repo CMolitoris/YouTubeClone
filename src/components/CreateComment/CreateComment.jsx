@@ -42,7 +42,7 @@ class CreateComment extends Component {
         return ( 
             <div className='col-lg-6 col-md-8 col-sm mx-auto mt-3'>
                 
-                <Accordion>
+                <Accordion className='panel-style'>
                     <Accordion.Item className='bg-dark' eventKey='0'>
                     <Accordion.Button onClick={this.handleOnClick} className='panel-toggle panel-height bg-dark' eventKey='0'>
                         <h3 className='panel-toggle ms-auto text-center'>Create Comment</h3>

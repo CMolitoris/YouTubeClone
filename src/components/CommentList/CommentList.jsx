@@ -2,6 +2,7 @@
 import CreateReply from '../CreateReply/CreateReply';
 import ReplyList from '../ReplyList/ReplyList'
 
+
 // class CommentList extends Component {
 //     constructor(props) {
 //         super(props);
@@ -30,6 +31,7 @@ const CommentList = (props) => {
             return ( 
                 <div>
                     <ul>
+
                         {props.comments.map((comment,index)=>{
                             return (
                                 <div>
@@ -45,7 +47,7 @@ const CommentList = (props) => {
             );
         }
         return (
-            <div>
+            <div classname='col-auto mx-auto'>
                 There are no comments for this video.
             </div>
         )

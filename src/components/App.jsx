@@ -8,8 +8,6 @@ import RecommendedVideos from './RecommendedVideos/RecommendedVideos';
 import axios from 'axios';
 import CommentList from './CommentList/CommentList';
 import CreateComment from './CreateComment/CreateComment';
-// import RecommendedVideoCarousal from './RecommendedVideoCarousal/RecommendedVideoCarousal';
-
 
 
 class App extends Component {
@@ -128,14 +126,17 @@ class App extends Component {
         <div className='row'>
           <Header onSearch={this.onSearch} />
         </div>
+        
         <div className='row bg-dark mt-3'>
           <div className='col-auto'>
             <SearchResults onVideoSelected={this.onVideoSelected} data={this.state.videoMetaInfo} />
           </div>
+
           <div className='col-auto ms-auto'>
             <RecommendedVideos onVideoSelected={this.onVideoSelected} data={this.state.relatedVideosMetaInfo} />
           </div>
         </div>
+
         <div className='row bg-dark'>
           <div className='col'>
             <VideoPlayer videoId={this.state.selectedVideoId} />
@@ -146,6 +147,13 @@ class App extends Component {
           <CreateComment createComment={this.createComment} videoId={this.state.selectedVideoId}/>
           <CommentList likeComment={this.likeComment} createReply={this.createReply} replies={this.state.replies} comments={this.state.comments}/>
         </div>
+        
+        <div className='row'>
+          <div class='col-auto mx-auto'>
+            <CommentList createReply={this.createReply} replies={this.state.replies} comments={this.state.comments}/>
+          </div>
+        </div>  
+        
 
       </div>
       

@@ -144,9 +144,9 @@ class App extends Component {
         <div className='row'>
           <CreateComment createComment={this.createComment} videoId={this.state.selectedVideoId}/>
         </div>
-        
+
         <div className='row'>
-          <div class='col-auto mx-auto'>
+          <div className='col-auto mx-auto'>
             <CommentList createReply={this.createReply} replies={this.state.replies} comments={this.state.comments}/>
           </div>
         </div>  

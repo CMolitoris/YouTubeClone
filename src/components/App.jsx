@@ -184,7 +184,7 @@ class App extends Component {
             <DisplayDescription description={this.state.selectedVideoDescription}/>
           </div>
           <div class='col-lg-6 col-md-8 col-sm mx-auto'>
-            <CommentList likeComment={this.likeComment} createReply={this.createReply} replies={this.state.replies} comments={this.state.comments}/>
+            <CommentList videoId={this.state.selectedVideoId} likeComment={this.likeComment} createReply={this.createReply} replies={this.state.replies} comments={this.state.comments}/>
           </div>
           <div className='col'></div>
         </div>  

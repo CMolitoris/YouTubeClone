@@ -6,7 +6,9 @@
 }
 
 .loading-spinner{
-  margin-inline: 40%;
+  text-align: center;
+  margin:auto;
+  width: 50%;
   margin-bottom: 15px;
 }
 

@@ -40,12 +40,12 @@ class CreateComment extends Component {
 
     render() { 
         return ( 
-            <div className='col-6 mx-auto mt-3'>
+            <div className='col-lg-6 col-md-8 col-sm mx-auto mt-3'>
                 
                 <Accordion>
                     <Accordion.Item className='bg-dark' eventKey='0'>
                     <Accordion.Button onClick={this.handleOnClick} className='panel-toggle panel-height bg-dark' eventKey='0'>
-                        <h3 className='panel-toggle ms-auto'>Create Comment:</h3>
+                        <h3 className='panel-toggle ms-auto text-center'>Create Comment</h3>
                     </Accordion.Button>    
                         <Accordion.Body>
                             <form onSubmit={(event)=> this.handleSubmit(event)}>

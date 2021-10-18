@@ -17,7 +17,7 @@ class App extends Component {
     this.state = { 
       videoMetaInfo: [],
       selectedVideoId: null,
-      selectedVideoDescription: '',
+      selectedVideoDescription: [],
       relatedVideosMetaInfo: [],
       comments: [],
       replies: []
@@ -96,7 +96,7 @@ class App extends Component {
   }
 
   likeComment = async (comment) => {
-    console.log(comment)
+    // console.log(comment)
     let tempComments = this.state.comments;
     let commentIndex = tempComments.indexOf(comment);
     let response = await axios.patch(`http://127.0.0.1:8000/comments/${comment.id}/`, {likes: comment.likes+=1})
@@ -122,10 +122,33 @@ class App extends Component {
   getVideoDescription = async (videoId) => {
     const KEY = 'AIzaSyAYeKsezkaeMiwJe_1b3ayMyQ8zHhfw_3I';
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${KEY}`)
-    // console.log(response)
+    let stringDescription = response.data.items[0].snippet.description.split("\n");
+    console.log(stringDescription)
+    
+    let paragraphs = []
+    let startIndex = 0
+    for(let i=0;i<stringDescription.length;i++){
+      if(stringDescription[i]===''){
+        let newArray = []
+        for(;startIndex<i;startIndex++){
+          newArray.push(stringDescription[startIndex])
+          
+        }
+        paragraphs.push(newArray)
+      }
+    }
+    console.log(paragraphs)
+
+    for(let i=0;i<paragraphs.length;i++){
+      let string = paragraphs[i].join(' ')
+      paragraphs.splice(i,1,string)
+      console.log(string)
+    }
+    console.log(paragraphs)
     this.setState({
-      selectedVideoDescription: response.data.items[0].snippet.description
+      selectedVideoDescription: paragraphs
     })
+    console.log(this.state)
   }
 
 

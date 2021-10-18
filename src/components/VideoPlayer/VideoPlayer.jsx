@@ -8,8 +8,8 @@ import Button from 'react-bootstrap/Button';
 const VideoPlayer = ({ videoId }) => {
   if (!videoId) {
     return (
-      <>
-        <Button variant="dark" disabled className='loading-spinner'>
+      <Col className='loading-spinner'>
+        <Button variant="dark" disabled >
           <h3>Please search for a video.</h3> 
           <Spinner
             as="span"
@@ -20,7 +20,7 @@ const VideoPlayer = ({ videoId }) => {
           />
           <h3>User Loading...</h3>
         </Button>
-      </>
+      </Col>
       // <p style={{ textAlign: "center", fontSize: "18px", fontWeight: "bold" }}>
       //   Search for a video
       // </p>

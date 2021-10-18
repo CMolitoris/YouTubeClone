@@ -30,15 +30,20 @@ const CommentList = (props) => {
         if(props.comments.length>0) {
             return ( 
                 <div>
-                    <ul>
-
+                    <ul className='list-group list-group-flush'>
                         {props.comments.map((comment,index)=>{
                             return (
                                 <div>
-                                    <li key={index}>{comment.username}: {comment.body} | Likes: {comment.likes} <button onClick={() => props.likeComment(comment)}>Like</button></li> 
-                                    <CreateReply createReply={props.createReply} commentId={comment.id}/>
+                                    <li className='list-group-item d-flex justify-content-between align-items-start bg-dark text-light' key={index}>
+                                        <div class='ms-2 me-auto'>
+                                            <div>
+                                                {comment.username}: {comment.body} | {comment.likes} <button className='btn btn-sm btn-success rounded-circle shadow'onClick={() => props.likeComment(comment)}><i class="bi bi-hand-thumbs-up-fill"></i></button>
+                                                <ReplyList replies={props.replies} commentId={comment.id}/>
+                                                <CreateReply createReply={props.createReply} commentId={comment.id}/>
+                                            </div>
+                                        </div>
+                                    </li>     
                                     {/* {this.filterReplies(comment.id)} */}
-                                    <ReplyList replies={props.replies} commentId={comment.id}/>
                                 </div>  
                             )
                         })}

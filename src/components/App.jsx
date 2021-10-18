@@ -112,18 +112,18 @@ class App extends Component {
 
   getRelatedVideos = async (videoId) => {
     const KEY = 'AIzaSyAYeKsezkaeMiwJe_1b3ayMyQ8zHhfw_3I';
-    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${videoId}&type=video&key=${KEY}/`)
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${videoId}&type=video&key=${KEY}`)
     this.setState({
       relatedVideosMetaInfo: response.data.items
     })
-    //console.log(this.state.relatedVideosMetaInfo)
+    // console.log(this.state.relatedVideosMetaInfo)
   }
 
   getVideoDescription = async (videoId) => {
     const KEY = 'AIzaSyAYeKsezkaeMiwJe_1b3ayMyQ8zHhfw_3I';
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${KEY}`)
     let stringDescription = response.data.items[0].snippet.description.split("\n");
-    console.log(stringDescription)
+  
     
     let paragraphs = []
     let startIndex = 0
@@ -137,7 +137,6 @@ class App extends Component {
         paragraphs.push(newArray)
       }
     }
-    console.log(paragraphs)
 
     for(let i=0;i<paragraphs.length;i++){
       let string = paragraphs[i].join(' ')

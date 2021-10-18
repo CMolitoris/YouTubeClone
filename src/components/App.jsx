@@ -8,6 +8,7 @@ import RecommendedVideos from './RecommendedVideos/RecommendedVideos';
 import axios from 'axios';
 import CommentList from './CommentList/CommentList';
 import CreateComment from './CreateComment/CreateComment';
+import DisplayDescription from './DisplayDescription/DisplayDescription';
 
 
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
     this.state = { 
       videoMetaInfo: [],
       selectedVideoId: null,
+      selectedVideoDescription: '',
       relatedVideosMetaInfo: [],
       comments: [],
       replies: []
@@ -23,9 +25,10 @@ class App extends Component {
      }
   }
 
-  onVideoSelected = (videoId) => {
+  onVideoSelected = (videoId,description) => {
     this.setState({
       selectedVideoId: videoId,
+      selectedVideoDescription: description
     })
     this.getRelatedVideos(videoId)
     this.getComments(videoId)
@@ -42,12 +45,13 @@ class App extends Component {
     this.setState({
       videoMetaInfo: response.data.items,
       selectedVideoId: response.data.items[0].id.videoId,
-      
+      selectedVideoDescription: response.data.items[0].snippet.description
     })
     this.getRelatedVideos(this.state.selectedVideoId)
     this.getComments(this.state.selectedVideoId)
     this.getReplies()
-    //console.log(this.state)
+    this.getVideoDescription(this.selectedVideoId)
+    console.log(this.state)
   }
 
   getComments = async (videoId) => {
@@ -55,7 +59,7 @@ class App extends Component {
     let filteredComments = response.data.filter((comment)=>{
       return comment.videoId ===videoId;
     })
-    console.log(filteredComments)
+    // console.log(filteredComments)
     this.setState({
       comments: filteredComments
     })
@@ -64,7 +68,7 @@ class App extends Component {
 
   getReplies = async () => {
     let response = await axios.get('http://127.0.0.1:8000/replies/')
-    console.log(response.data)
+    // console.log(response.data)
     this.setState({
       replies: response.data
     })
@@ -93,10 +97,8 @@ class App extends Component {
   }
 
   likeComment = async (comment) => {
-    
     console.log(comment)
     let tempComments = this.state.comments;
-    // let comment = tempComments.find(element => element.id === commentId)
     let commentIndex = tempComments.indexOf(comment);
     let response = await axios.patch(`http://127.0.0.1:8000/comments/${comment.id}/`, {likes: comment.likes+=1})
     tempComments.splice(commentIndex,1,response.data);
@@ -116,8 +118,14 @@ class App extends Component {
       relatedVideosMetaInfo: response.data.items
     })
     //console.log(this.state.relatedVideosMetaInfo)
-
   }
+
+  getVideoDescription = async (videoId) => {
+    const KEY = 'AIzaSyAEg67dDzltMnI9LlwTB2dl2VgF1y6ymDI';
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${KEY}`)
+    console.log(response)
+  }
+
 
   render() { 
     return ( 
@@ -148,6 +156,9 @@ class App extends Component {
         </div>
         
         <div className='row'>
+          <div className='col'>
+            <DisplayDescription description={this.state.selectedVideoDescription}/>
+          </div>
           <div class='col-auto mx-auto'>
             <CommentList likeComment={this.likeComment} createReply={this.createReply} replies={this.state.replies} comments={this.state.comments}/>
           </div>

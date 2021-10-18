@@ -154,7 +154,7 @@ class App extends Component {
         <div className='row'>
           <CreateComment createComment={this.createComment} videoId={this.state.selectedVideoId}/>
         </div>
-        
+
         <div className='row'>
           <div className='col'>
             <DisplayDescription description={this.state.selectedVideoDescription}/>

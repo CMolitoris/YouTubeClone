@@ -4,6 +4,8 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import Accordion from 'react-bootstrap/Accordion';
+
 
 
 class CreateComment extends Component {
@@ -31,26 +33,37 @@ class CreateComment extends Component {
             body: '',
             videoId: ''
         })
+    }
     
+    handleOnClick = (event) => {
     }
 
     render() { 
         return ( 
-            <div className='col-auto mx-auto'>
-                <h3>Add a comment:</h3>
-                <form onSubmit={(event)=> this.handleSubmit(event)}>
-                    <Form.Group as={Row} className='my-1' controlID='createComment'>
-                        <Col lg={3}>
-                            <Form.Control placeholder="Username.." name="username" onChange={this.handleChange} value={this.state.username}/>
-                        </Col>
-                        <Col lg={8}>
-                            <Form.Control placeholder="Comment.." name="body" onChange={this.handleChange} value={this.state.body}/>
-                        </Col>
-                        <Col lg={1}>
-                            <Button className='btn btn-md btn-danger shadow' type="submit">Submit</Button>
-                        </Col>
-                    </Form.Group>
-                </form>
+            <div className='col-6 mx-auto mt-3'>
+                
+                <Accordion>
+                    <Accordion.Item className='bg-dark' eventKey='0'>
+                    <Accordion.Button onClick={this.handleOnClick} className='panel-toggle panel-height bg-dark' eventKey='0'>
+                        <h3 className='panel-toggle ms-auto'>Create Comment:</h3>
+                    </Accordion.Button>    
+                        <Accordion.Body>
+                            <form onSubmit={(event)=> this.handleSubmit(event)}>
+                                <Form.Group as={Row} className='my-1' controlID='createComment'>
+                                    <Col lg={3}>
+                                        <Form.Control placeholder="Username.." name="username" onChange={this.handleChange} value={this.state.username}/>
+                                    </Col>
+                                    <Col lg={7}>
+                                        <Form.Control placeholder="Comment.." name="body" onChange={this.handleChange} value={this.state.body}/>
+                                    </Col>
+                                    <Col lg={1}>
+                                        <Button className='btn btn-md btn-danger shadow' type="submit">Submit</Button>
+                                    </Col>
+                                </Form.Group>
+                            </form>
+                        </Accordion.Body>
+                    </Accordion.Item>
+                </Accordion>
             </div>
             
          );

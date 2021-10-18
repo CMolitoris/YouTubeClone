@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import CreateReply from '../CreateReply/CreateReply';
 
+
 class CommentList extends Component {
     constructor(props) {
         super(props);
@@ -27,7 +28,7 @@ class CommentList extends Component {
         if(this.props.comments.length>0) {
             return ( 
                 <div>
-                <ul>
+                    <ul>
                     {this.props.comments.map((comment,index)=>{
                         return (
                             <>
@@ -37,12 +38,12 @@ class CommentList extends Component {
                             </>  
                         )
                     })}
-                </ul>
+                    </ul>
                 </div>
             );
         }
         return (
-            <div>
+            <div classname='col-auto mx-auto'>
                 There are no comments for this video.
             </div>
         )

@@ -1,4 +1,5 @@
 import React from "react";
+import './VideoList.css'
 
 function selectVideo(videoIdObj, onVideoSelected) {
   onVideoSelected(videoIdObj.videoId);
@@ -19,7 +20,7 @@ function constructVideoTitles(vidoesData, onVideoSelected) {
   return vidoesData.map(({ snippet, id }, index) => {
     return (
       <div
-        className="video"
+        className="video video-thumbnail shadow"
         key={index}
         onClick={() => selectVideo(id, onVideoSelected)}>
         <div style={getCss(snippet.thumbnails.high.url)} key={index} />

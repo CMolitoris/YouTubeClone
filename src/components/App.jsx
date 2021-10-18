@@ -160,7 +160,7 @@ class App extends Component {
           <Header onSearch={this.onSearch} />
         </div>
         
-        <div className='row bg-dark mt-3'>
+        <div className='row bg-dark mt-4'>
           <div className='col-auto'>
             <SearchResults onVideoSelected={this.onVideoSelected} data={this.state.videoMetaInfo} />
           </div>
@@ -184,9 +184,10 @@ class App extends Component {
           <div className='col'>
             <DisplayDescription description={this.state.selectedVideoDescription}/>
           </div>
-          <div class='col-auto mx-auto'>
+          <div class='col-lg-6 col-md-8 col-sm mx-auto'>
             <CommentList likeComment={this.likeComment} createReply={this.createReply} replies={this.state.replies} comments={this.state.comments}/>
           </div>
+          <div className='col'></div>
         </div>  
         
 

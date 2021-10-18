@@ -92,6 +92,16 @@ class App extends Component {
     })
   }
 
+  likeComment = async (comment) => {
+    comment.likes += 1;
+    let tempComments = this.state.comments;
+    let commentIndex = tempComments.findIndex(comment);
+    let response = await axios.put(`http://127.0.0.1:8000/comments/${comment.id}`,comment)
+    tempComments.splice(commentIndex,1,response.data);
+    this.setState({comments: tempComments})
+
+  }
+
 
   componentDidMount = () => {
     this.getComments(this.state.selectedVideoId)
@@ -133,8 +143,8 @@ class App extends Component {
         
         <div className='row'>
           <CreateComment createComment={this.createComment} videoId={this.state.selectedVideoId}/>
-          
         </div>
+        
         <div className='row'>
           <div class='col-auto mx-auto'>
             <CommentList createReply={this.createReply} replies={this.state.replies} comments={this.state.comments}/>

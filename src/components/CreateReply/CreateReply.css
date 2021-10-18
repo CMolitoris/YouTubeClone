@@ -1,0 +1,15 @@
+#reply-toggle{
+    border: #F05454;
+    border-style: solid;
+    margin-top: 2.5px;
+    max-height: 15px;
+    max-width: 90px;
+
+}
+
+.font-style{
+    color: #DDDDDD;
+    padding-top: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}

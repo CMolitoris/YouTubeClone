@@ -40,7 +40,7 @@ class CreateComment extends Component {
 
     render() { 
         return ( 
-            <div className='col-lg-6 col-md-8 col-sm mx-auto mt-3'>
+            <div className='col-md-6 col-sm mx-auto mt-3'>
                 
                 <Accordion className='panel-style'>
                     <Accordion.Item className='bg-dark' eventKey='0'>

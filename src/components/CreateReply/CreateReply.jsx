@@ -12,7 +12,7 @@ class CreateReply extends Component {
         super(props);
         this.state = { 
             body: '',
-            commentId: this.props.commentId
+            commentId: ''
          }
     }
 
@@ -24,9 +24,16 @@ class CreateReply extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
+        let commentId = this.props.commentId;
+        this.setState({
+            commentId: commentId
+        })
         console.log(this.state)
         this.props.createReply(this.state)
-        this.setState({body: ''})
+        this.setState({
+            body: '',
+            commentId: ''
+        })
     }
 
     render() { 

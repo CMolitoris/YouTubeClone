@@ -35,7 +35,7 @@ const CommentList = (props) => {
                         {props.comments.map((comment,index)=>{
                             return (
                                 <div>
-                                    <li className='list-group-item justify-content-between align-items-start bg-dark text-light' key={index}>
+                                    <li className='list-group-item justify-content-between align-items-start bg-dark text-light shadow' key={index}>
                                         <div className='row ms-2 me-auto'>
                                             <div className='col'>
                                                 <div className='h4'>

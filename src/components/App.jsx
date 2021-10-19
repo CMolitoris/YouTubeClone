@@ -169,7 +169,7 @@ class App extends Component {
           </div>
         </div>
 
-        <div className='row bg-dark'>
+        <div className='row bg-dark shadow'>
           <div className='col'>
             <VideoPlayer videoId={this.state.selectedVideoId} />
           </div>

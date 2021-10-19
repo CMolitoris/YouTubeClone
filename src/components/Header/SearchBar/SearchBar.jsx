@@ -31,13 +31,13 @@ class SearchBar extends Component {
         return (
             <Form onSubmit={this.onSubmit} className='get'>
                 <Form.Group as={Row} className='my-1' controlID='searchBar'>
-                    <Form.Label column>
+                    <Form.Label column xs={2} className='text-end'>
                         Logo
                     </Form.Label>
-                    <Col>
+                    <Col xs={8}>
                         <Form.Control onChange={this.onChange} value={this.state.title} type="text" name='searchInput'  placeholder="Search..."/>
                     </Col>
-                    <Col>
+                    <Col xs={2}>
                         <Button type='submit' className='btn btn-md btn-danger shadow'><i class="bi bi-search"></i></Button>
                     </Col>
                 </Form.Group>

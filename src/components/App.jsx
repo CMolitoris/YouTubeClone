@@ -25,14 +25,15 @@ class App extends Component {
      }
   }
 
-  onVideoSelected = (videoId) => {
+  onVideoSelected = async (videoId) => {
+    
+    await this.getRelatedVideos(videoId)
+    await this.getComments(videoId)
+    await this.getReplies()
+    await this.getVideoDescription(videoId)
     this.setState({
       selectedVideoId: videoId
     })
-    this.getRelatedVideos(videoId)
-    this.getComments(videoId)
-    this.getReplies()
-    this.getVideoDescription(videoId)
   }
 
   onSearch = async (keyword) => {
@@ -56,23 +57,23 @@ class App extends Component {
     console.log(this.state)
 
     //-- If a video cannot be found based on the search keyword, a video list will be queried based on a pontential channel name --//
-    if(this.state.selectedVideoId===undefined){
-      try {
-        const response = await YouTube.get("/search", {
-          params: {
-            channelId: keyword
-          }
-        })
-        console.log(response)
-        this.setState({
-          videoMetaInfo: response.data.items,
-          selectedVideoId: response.data.items[0].id.videoId,
-        })
-      }
-      catch (error) {
-        console.log(error)
-      }
-    }
+    // if(this.state.selectedVideoId===undefined){
+    //   try {
+    //     const response = await YouTube.get("/search", {
+    //       params: {
+    //         channelId: keyword
+    //       }
+    //     })
+    //     console.log(response)
+    //     this.setState({
+    //       videoMetaInfo: response.data.items,
+    //       selectedVideoId: response.data.items[0].id.videoId,
+    //     })
+    //   }
+    //   catch (error) {
+    //     console.log(error)
+    //   }
+    // }
     console.log(this.state)
     //-- After finding a video, each stateful object will be populated from the database/Django backend --//
     await this.getRelatedVideos(this.state.selectedVideoId)
@@ -150,7 +151,7 @@ class App extends Component {
   }
 
   getRelatedVideos = async (videoId) => {
-    const KEY = 'AIzaSyAEg67dDzltMnI9LlwTB2dl2VgF1y6ymDI';
+    const KEY = 'AIzaSyBFvQ5F6XsuNlYYwK8nO46hl3-BKtEGwHU';
     try {
       let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${videoId}&type=video&key=${KEY}`)
       this.setState({
@@ -164,7 +165,7 @@ class App extends Component {
   }
 
   getVideoDescription = async (videoId) => {
-    const KEY = 'AIzaSyAEg67dDzltMnI9LlwTB2dl2VgF1y6ymDI';
+    const KEY = 'AIzaSyBFvQ5F6XsuNlYYwK8nO46hl3-BKtEGwHU';
 
     try {
       let response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${KEY}`)

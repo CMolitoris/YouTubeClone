@@ -40,7 +40,7 @@ class CreateComment extends Component {
 
     render() { 
         return ( 
-            <div className='col-md-6 col-sm mx-auto mt-3'>
+            // <div className='col-md-6 col-sm mx-auto mt-3'>
                 
                 <Accordion className='panel-style'>
                     <Accordion.Item className='bg-dark' eventKey='0'>
@@ -64,7 +64,7 @@ class CreateComment extends Component {
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
-            </div>
+            // </div>
             
          );
     }

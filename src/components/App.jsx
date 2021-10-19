@@ -36,6 +36,7 @@ class App extends Component {
   }
 
   onSearch = async (keyword) => {
+    //-- Attempts to find video based off the keyword as a search type --//
     try {
       const response = await YouTube.get("/search", {
         params: {
@@ -54,6 +55,7 @@ class App extends Component {
     }
     console.log(this.state)
 
+    //-- If a video cannot be found based on the search keyword, a video list will be queried based on a pontential channel name --//
     if(this.state.selectedVideoId===undefined){
       try {
         const response = await YouTube.get("/search", {
@@ -72,6 +74,7 @@ class App extends Component {
       }
     }
     console.log(this.state)
+    //-- After finding a video, each stateful object will be populated from the database/Django backend --//
     await this.getRelatedVideos(this.state.selectedVideoId)
     await this.getComments(this.state.selectedVideoId)
     await this.getReplies()

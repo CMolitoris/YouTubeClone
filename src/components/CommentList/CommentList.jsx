@@ -43,7 +43,6 @@ const CommentList = (props) => {
                                             </div>
                                         </div>
                                     </li>     
-                                    {/* {this.filterReplies(comment.id)} */}
                                 </div>  
                             )
                         })}
@@ -51,7 +50,7 @@ const CommentList = (props) => {
                 </div>
             );
         }
-        else if(props.videoId===null){
+        else if(props.videoId===null || props.videoId===undefined){
             return (
                 <div classname='col-auto mx-auto'>
                     

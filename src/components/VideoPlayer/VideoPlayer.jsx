@@ -27,12 +27,15 @@ const VideoPlayer = ({ videoId }) => {
     );
   }
   return (
-    <Col xs={10} className="ratio ratio-16x9  mx-auto text-center py-2">
-      <iframe
+    <Col md={10} xs={12} className="video-player mx-auto text-center py-2">
+      <div className='ratio ratio-16x9'>
+        <iframe
         title={videoId}
-        className=" border border-danger border-4 rounded-3 shadow"
+        className="video-iframe border border-danger border-4 rounded-3 shadow"
         src={`https://www.youtube.com/embed/${videoId}`}
-      />
+        allowfullscreen
+        />
+      </div>
     </Col>
   );
 };

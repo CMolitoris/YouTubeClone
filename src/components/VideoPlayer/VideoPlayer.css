@@ -1,7 +1,8 @@
 .video-player .video-iframe{
-  width: 120rem;
-  height: 67.5rem;
-
+  width: 100%;
+  height: 100%;
+  max-width: 120rem;
+  max-height: 67.5rem;
 }
 
 

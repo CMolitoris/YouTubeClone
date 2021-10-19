@@ -9,6 +9,7 @@ import axios from 'axios';
 import CommentList from './CommentList/CommentList';
 import CreateComment from './CreateComment/CreateComment';
 import DisplayDescription from './DisplayDescription/DisplayDescription';
+import VideoTitle from './VideoTitle/VideoTitle';
 
 
 class App extends Component {
@@ -208,8 +209,12 @@ class App extends Component {
         <div className='row'>
           <Header onSearch={this.onSearch} />
         </div>
+
+        <div>
+          <VideoTitle />
+        </div>
         
-        <div className='row bg-dark mt-4'>
+        <div className='row bg-dark'>
           <div className='col-auto'>
             <SearchResults onVideoSelected={this.onVideoSelected} data={this.state.videoMetaInfo} />
           </div>
@@ -224,10 +229,6 @@ class App extends Component {
             <VideoPlayer videoId={this.state.selectedVideoId} />
           </div>
         </div>
-        
-        {/* <div className='row'>
-          <CreateComment createComment={this.createComment} videoId={this.state.selectedVideoId}/>
-        </div> */}
 
         <div className='row'>
           <div className='col-xl-3 col-lg-2 col-sm-none mt-3'>
@@ -240,7 +241,6 @@ class App extends Component {
           <div className='col-xl-3 col-lg-2 col-sm-none'></div>
         </div>  
         
-
       </div>
       
      );

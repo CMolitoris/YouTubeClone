@@ -1,4 +1,6 @@
-.title-spacing{
+.title-styling{
+    color: #DDDDDD;
+    font-weight: bold;
     margin-top: 15px;
     margin-bottom: 15px;
 }

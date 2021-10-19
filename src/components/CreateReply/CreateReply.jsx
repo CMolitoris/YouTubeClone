@@ -34,7 +34,7 @@ class CreateReply extends Component {
             <div>
                 <Accordion className='bg-dark' flush>
                     <Accordion.Item className='bg-dark' eventKey='0'>
-                        <Accordion.Button id='reply-toggle' className='bg-dark' onClick={this.handleOnClick} eventKey='0'>
+                        <Accordion.Button id='reply-toggle' className='bg-dark mt-3' onClick={this.handleOnClick} eventKey='0'>
                             <h3 className='font-style'>Reply</h3>
                         </Accordion.Button>    
                         <Accordion.Body>

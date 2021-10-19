@@ -32,10 +32,10 @@ const CommentList = (props) => {
             return ( 
                 <div>
                     <ul className='list-group list-group-flush'>
-                        {props.comments.map((comment,index)=>{
+                        {props.comments.map((comment)=>{
                             return (
                                 <div>
-                                    <li className='list-group-item justify-content-between align-items-start bg-dark text-light shadow' key={index}>
+                                    <li className='list-group-item justify-content-between align-items-start bg-dark text-light shadow' key={comment.id}>
                                         <div className='row ms-2 me-auto'>
                                             <div className='col'>
                                                 <div className='h4'>

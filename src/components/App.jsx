@@ -39,26 +39,44 @@ class App extends Component {
     try {
       const response = await YouTube.get("/search", {
         params: {
-          q:keyword
+          q: keyword
         }
         
       })
-      
-      console.log(response)
       this.setState({
         videoMetaInfo: response.data.items,
         selectedVideoId: response.data.items[0].id.videoId,
       })
-      await this.getRelatedVideos(this.state.selectedVideoId)
-      await this.getComments(this.state.selectedVideoId)
-      await this.getReplies()
-      await this.getVideoDescription(this.state.selectedVideoId)
+      
     }
     catch(error) {
       console.log(error)
     }
-    
     console.log(this.state)
+
+    if(this.state.selectedVideoId===undefined){
+      try {
+        const response = await YouTube.get("/search", {
+          params: {
+            channelId: keyword
+          }
+        })
+        console.log(response)
+        this.setState({
+          videoMetaInfo: response.data.items,
+          selectedVideoId: response.data.items[0].id.videoId,
+        })
+      }
+      catch (error) {
+        console.log(error)
+      }
+    }
+    console.log(this.state)
+    await this.getRelatedVideos(this.state.selectedVideoId)
+    await this.getComments(this.state.selectedVideoId)
+    await this.getReplies()
+    await this.getVideoDescription(this.state.selectedVideoId)
+    
   }
 
   getComments = async (videoId) => {
@@ -129,7 +147,7 @@ class App extends Component {
   }
 
   getRelatedVideos = async (videoId) => {
-    const KEY = 'AIzaSyAYeKsezkaeMiwJe_1b3ayMyQ8zHhfw_3I';
+    const KEY = 'AIzaSyAEg67dDzltMnI9LlwTB2dl2VgF1y6ymDI';
     try {
       let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${videoId}&type=video&key=${KEY}`)
       this.setState({
@@ -143,7 +161,7 @@ class App extends Component {
   }
 
   getVideoDescription = async (videoId) => {
-    const KEY = 'AIzaSyAYeKsezkaeMiwJe_1b3ayMyQ8zHhfw_3I';
+    const KEY = 'AIzaSyAEg67dDzltMnI9LlwTB2dl2VgF1y6ymDI';
 
     try {
       let response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${KEY}`)

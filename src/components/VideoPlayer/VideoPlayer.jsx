@@ -27,10 +27,10 @@ const VideoPlayer = ({ videoId }) => {
     );
   }
   return (
-    <Col className="video-player text-center py-2">
+    <Col xs={10} className="ratio ratio-16x9  mx-auto text-center py-2">
       <iframe
         title={videoId}
-        className="video-iframe border border-danger border-4 rounded-3 shadow"
+        className=" border border-danger border-4 rounded-3 shadow"
         src={`https://www.youtube.com/embed/${videoId}`}
       />
     </Col>

@@ -1,10 +1,9 @@
-.video-player .video-iframe {
-    width: 100%;
-    max-width: 1920px;
-    height: 100%;
-    min-height: 576px;
-    max-height: 1080px;
+.video-player .video-iframe{
+  width: 120rem;
+  height: 67.5rem;
+
 }
+
 
 .loading-spinner{
   text-align: center;

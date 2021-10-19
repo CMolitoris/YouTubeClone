@@ -9,6 +9,7 @@ import axios from 'axios';
 import CommentList from './CommentList/CommentList';
 import CreateComment from './CreateComment/CreateComment';
 import DisplayDescription from './DisplayDescription/DisplayDescription';
+import VideoTitle from './VideoTitle/VideoTitle';
 
 
 class App extends Component {
@@ -209,8 +210,12 @@ class App extends Component {
         <div className='row'>
           <Header onSearch={this.onSearch} />
         </div>
+
+        <div>
+          <VideoTitle />
+        </div>
         
-        <div className='row bg-dark mt-4'>
+        <div className='row bg-dark'>
           <div className='col-auto'>
             <SearchResults onVideoSelected={this.onVideoSelected} data={this.state.videoMetaInfo} />
           </div>
@@ -225,23 +230,18 @@ class App extends Component {
             <VideoPlayer videoId={this.state.selectedVideoId} />
           </div>
         </div>
-        
-        {/* <div className='row'>
-          <CreateComment createComment={this.createComment} videoId={this.state.selectedVideoId}/>
-        </div> */}
 
         <div className='row'>
           <div className='col-xl-3 col-lg-2 col-sm-none mt-3'>
             <DisplayDescription description={this.state.selectedVideoDescription}/>
           </div>
-          <div class='col-xl-6 col-lg-8 col-sm mt-3'>
+          <div className='col-xl-6 col-lg-8 col-sm mt-3'>
             <CreateComment createComment={this.createComment} videoId={this.state.selectedVideoId}/>
             <CommentList videoId={this.state.selectedVideoId} dislikeComment={this.dislikeComment} likeComment={this.likeComment} createReply={this.createReply} replies={this.state.replies} comments={this.state.comments}/>
           </div>
           <div className='col-xl-3 col-lg-2 col-sm-none'></div>
         </div>  
         
-
       </div>
       
      );

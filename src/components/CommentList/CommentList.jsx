@@ -1,4 +1,5 @@
 // import React,{Component} from 'react';
+import Badge from 'react-bootstrap/Badge';
 import CreateReply from '../CreateReply/CreateReply';
 import ReplyList from '../ReplyList/ReplyList'
 
@@ -34,12 +35,31 @@ const CommentList = (props) => {
                         {props.comments.map((comment,index)=>{
                             return (
                                 <div>
-                                    <li className='list-group-item d-flex justify-content-between align-items-start bg-dark text-light' key={index}>
-                                        <div class='ms-2 me-auto'>
-                                            <div>
-                                                {comment.username}: {comment.body} | {comment.likes} <button className='btn btn-sm btn-success rounded-circle shadow'onClick={() => props.likeComment(comment)}><i class="bi bi-hand-thumbs-up-fill"></i></button>
-                                                <ReplyList replies={props.replies} commentId={comment.id}/>
-                                                <CreateReply createReply={props.createReply} commentId={comment.id}/>
+                                    <li className='list-group-item justify-content-between align-items-start bg-dark text-light' key={index}>
+                                        <div className='row ms-2 me-auto'>
+                                            <div className='col'>
+                                                <div className='h4'>
+                                                    {comment.username}
+                                                </div> 
+                                                <hr className=''/>
+                                                <div className='h5'>
+                                                    {comment.body} 
+                                                </div>
+                                                <hr className=''/>
+                                                <div className='h5'>
+                                                    <ReplyList replies={props.replies} commentId={comment.id}/>
+                                                    <CreateReply createReply={props.createReply} commentId={comment.id}/>
+                                                </div>
+                                            </div>
+                                            <div className='col-xl-3 text-end order-xl-last order-first'>  
+                                                <button className='btn btn-sm btn-success rounded-circle shadow' onClick={() => props.likeComment(comment)}>
+                                                    <i class="bi bi-hand-thumbs-up-fill"></i>
+                                                </button>
+                                                <Badge bg='success' className='ms-1 me-3'>{comment.likes}</Badge>
+                                                <button className='btn btn-sm btn-danger rounded-circle shadow' onClick>
+                                                    <i class="bi bi-hand-thumbs-down-fill"></i>
+                                                </button>
+                                                <Badge bg='danger' className='ms-1'>0</Badge>
                                             </div>
                                         </div>
                                     </li>     

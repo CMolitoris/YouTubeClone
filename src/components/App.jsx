@@ -112,7 +112,7 @@ class App extends Component {
 
   getRelatedVideos = async (videoId) => {
     const KEY = 'AIzaSyAYeKsezkaeMiwJe_1b3ayMyQ8zHhfw_3I';
-    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${videoId}&type=video&key=${KEY}/`)
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${videoId}&type=video&key=${KEY}`)
     this.setState({
       relatedVideosMetaInfo: response.data.items
     })
@@ -181,13 +181,13 @@ class App extends Component {
         </div>
 
         <div className='row'>
-          <div className='col'>
+          <div className='col-lg-3 col-md-2 col-sm-none'>
             <DisplayDescription description={this.state.selectedVideoDescription}/>
           </div>
-          <div class='col-lg-6 col-md-8 col-sm mx-auto'>
+          <div class='col-lg-6 col-md-8 col-sm'>
             <CommentList likeComment={this.likeComment} createReply={this.createReply} replies={this.state.replies} comments={this.state.comments}/>
           </div>
-          <div className='col'></div>
+          <div className='col-lg-3 col-md-2 col-sm-none'></div>
         </div>  
         
 

@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row'
 const VideoTitle = (props) => {
 
 
-    if(props.title === null) {
+    if(props.title === '') {
         return ( 
             <Col className='text-center title-spacing'>
                 
@@ -16,12 +16,12 @@ const VideoTitle = (props) => {
     return ( 
         <Row>
             <Col className='text-end title-styling h2'>
-               {/* {props.title + ' '} | */}
-               This Title |
+               {props.title + ' '} |
+               
             </Col>
             <Col className='text-start title-styling h2'>
-                {/*| {' ' + props.channelName}  */}
-                | Channel Name
+                | {' ' + props.channelName} 
+                
             </Col>
         </Row>
     );

@@ -18,6 +18,8 @@ class App extends Component {
     this.state = { 
       videoMetaInfo: [],
       selectedVideoId: null,
+      selectedVideoTitle: '',
+      selectedVideoChannelName: '',
       selectedVideoDescription: [],
       relatedVideosMetaInfo: [],
       comments: [],
@@ -26,14 +28,16 @@ class App extends Component {
      }
   }
 
-  onVideoSelected = async (videoId) => {
+  onVideoSelected = async (videoId,title,channelName) => {
     
     await this.getRelatedVideos(videoId)
     await this.getComments(videoId)
     await this.getReplies()
     await this.getVideoDescription(videoId)
     this.setState({
-      selectedVideoId: videoId
+      selectedVideoId: videoId,
+      selectedVideoTitle: title,
+      selectedVideoChannelName: channelName
     })
   }
 
@@ -49,6 +53,8 @@ class App extends Component {
       this.setState({
         videoMetaInfo: response.data.items,
         selectedVideoId: response.data.items[0].id.videoId,
+        selectedVideoChannelName: response.data.items[0].snippet.channelTitle,
+        selectedVideoTitle: response.data.items[0].snippet.title
       })
       
     }
@@ -212,7 +218,7 @@ class App extends Component {
         </div>
 
         <div>
-          <VideoTitle />
+          <VideoTitle title={this.state.selectedVideoTitle} channelName={this.state.selectedVideoChannelName} />
         </div>
         
         <div className='row bg-dark'>

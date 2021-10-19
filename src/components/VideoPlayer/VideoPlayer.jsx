@@ -27,7 +27,7 @@ const VideoPlayer = ({ videoId }) => {
     );
   }
   return (
-    <Col className="video-player text-center py-2">
+    <Col className="video-player mx-auto text-center py-2">
       <iframe
         title={videoId}
         className="video-iframe border border-danger border-4 rounded-3 shadow"

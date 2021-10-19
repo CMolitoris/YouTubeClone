@@ -1,9 +1,13 @@
-.video-player .video-iframe {
-    width: 100%;
-    max-width: 1920px;
-    height: 100%;
-    min-height: 576px;
-    max-height: 1080px;
+.video-player {
+  width: 80%;
+  height: 80%;
+}
+
+.video-iframe {
+    width: 80%;
+    max-width: 120rem;
+    height: 98%;
+    min-height: 67.5rem;
 }
 
 .loading-spinner{

@@ -1,0 +1,20 @@
+.panel-toggle{
+    margin-top: 3px;
+    margin-bottom: 3px;
+    color: #DDDDDD;
+}
+
+.panel-style{
+    background-color: #222831;
+    color: #DDDDDD;
+    font-size: 18px;
+    border: #F05454;
+    border-style: solid;
+    border-width: 2px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.panel-height{
+    height: 5px;
+}

@@ -188,24 +188,25 @@ class App extends Component {
           </div>
         </div>
 
-        <div className='row bg-dark'>
+        <div className='row bg-dark shadow'>
           <div className='col'>
             <VideoPlayer videoId={this.state.selectedVideoId} />
           </div>
         </div>
         
-        <div className='row'>
+        {/* <div className='row'>
           <CreateComment createComment={this.createComment} videoId={this.state.selectedVideoId}/>
-        </div>
+        </div> */}
 
         <div className='row'>
-          <div className='col'>
+          <div className='col-xl-3 col-lg-2 col-sm-none mt-3'>
             <DisplayDescription description={this.state.selectedVideoDescription}/>
           </div>
-          <div class='col-lg-6 col-md-8 col-sm mx-auto'>
+          <div class='col-xl-6 col-lg-8 col-sm mt-3'>
+            <CreateComment createComment={this.createComment} videoId={this.state.selectedVideoId}/>
             <CommentList videoId={this.state.selectedVideoId} likeComment={this.likeComment} createReply={this.createReply} replies={this.state.replies} comments={this.state.comments}/>
           </div>
-          <div className='col'></div>
+          <div className='col-xl-3 col-lg-2 col-sm-none'></div>
         </div>  
         
 

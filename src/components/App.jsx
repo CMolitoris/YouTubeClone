@@ -116,14 +116,14 @@ class App extends Component {
     this.setState({
       relatedVideosMetaInfo: response.data.items
     })
-    //console.log(this.state.relatedVideosMetaInfo)
+    // console.log(this.state.relatedVideosMetaInfo)
   }
 
   getVideoDescription = async (videoId) => {
     const KEY = 'AIzaSyAYeKsezkaeMiwJe_1b3ayMyQ8zHhfw_3I';
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${KEY}`)
     let stringDescription = response.data.items[0].snippet.description.split("\n");
-    console.log(stringDescription)
+  
     
     let paragraphs = []
     let startIndex = 0
@@ -137,7 +137,6 @@ class App extends Component {
         paragraphs.push(newArray)
       }
     }
-    console.log(paragraphs)
 
     for(let i=0;i<paragraphs.length;i++){
       let string = paragraphs[i].join(' ')
@@ -185,7 +184,7 @@ class App extends Component {
             <DisplayDescription description={this.state.selectedVideoDescription}/>
           </div>
           <div class='col-lg-6 col-md-8 col-sm'>
-            <CommentList likeComment={this.likeComment} createReply={this.createReply} replies={this.state.replies} comments={this.state.comments}/>
+            <CommentList videoId={this.state.selectedVideoId} likeComment={this.likeComment} createReply={this.createReply} replies={this.state.replies} comments={this.state.comments}/>
           </div>
           <div className='col-lg-3 col-md-2 col-sm-none'></div>
         </div>  

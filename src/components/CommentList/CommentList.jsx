@@ -71,6 +71,13 @@ const CommentList = (props) => {
                 </div>
             );
         }
+        else if(props.videoId===null){
+            return (
+                <div classname='col-auto mx-auto'>
+                    
+                </div>
+            )
+        }
         return (
             <div classname='col-auto mx-auto'>
                 There are no comments for this video.

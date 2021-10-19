@@ -15,13 +15,8 @@ const VideoTitle = (props) => {
     }
     return ( 
         <Row>
-            <Col className='text-end title-styling h2'>
-               {props.title + ' '} |
-               
-            </Col>
-            <Col className='text-start title-styling h2'>
-                | {' ' + props.channelName} 
-                
+            <Col className='text-center title-styling my-3 h4'>
+                {props.title}
             </Col>
         </Row>
     );

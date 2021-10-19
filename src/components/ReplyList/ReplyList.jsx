@@ -10,7 +10,7 @@ const ReplyList = (props) => {
         filteredReplies.map((reply,index)=> {
             return (
                 <ul>
-                    <li key={index}>
+                    <li key={index} className='my-2'>
                         {reply.body}
                     </li>
                 </ul>

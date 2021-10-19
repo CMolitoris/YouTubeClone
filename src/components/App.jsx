@@ -233,7 +233,7 @@ class App extends Component {
           <div className='col-xl-3 col-lg-2 col-sm-none mt-3'>
             <DisplayDescription description={this.state.selectedVideoDescription}/>
           </div>
-          <div class='col-xl-6 col-lg-8 col-sm mt-3'>
+          <div className='col-xl-6 col-lg-8 col-sm mt-3'>
             <CreateComment createComment={this.createComment} videoId={this.state.selectedVideoId}/>
             <CommentList videoId={this.state.selectedVideoId} dislikeComment={this.dislikeComment} likeComment={this.likeComment} createReply={this.createReply} replies={this.state.replies} comments={this.state.comments}/>
           </div>

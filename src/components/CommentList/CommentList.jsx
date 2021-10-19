@@ -72,13 +72,13 @@ const CommentList = (props) => {
         }
         else if(props.videoId===null || props.videoId===undefined){
             return (
-                <div classname='col-auto mx-auto'>
+                <div className='col-auto mx-auto'>
                     
                 </div>
             )
         }
         return (
-            <div classname='col-auto mx-auto'>
+            <div className='col-auto mx-auto'>
                 There are no comments for this video.
             </div>
         )

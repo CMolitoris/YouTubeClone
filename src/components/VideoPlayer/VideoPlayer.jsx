@@ -33,7 +33,7 @@ const VideoPlayer = ({ videoId }) => {
         title={videoId}
         className="video-iframe border border-danger border-4 rounded-3 shadow"
         src={`https://www.youtube.com/embed/${videoId}`}
-        allowfullscreen
+        allowFullScreen
         />
       </div>
     </Col>

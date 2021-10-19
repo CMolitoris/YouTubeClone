@@ -56,10 +56,10 @@ const CommentList = (props) => {
                                                     <i class="bi bi-hand-thumbs-up-fill"></i>
                                                 </button>
                                                 <Badge bg='success' className='ms-1 me-3'>{comment.likes}</Badge>
-                                                <button className='btn btn-sm btn-danger rounded-circle shadow' onClick>
+                                                <button className='btn btn-sm btn-danger rounded-circle shadow' onClick={() => props.dislikeComment(comment)}>
                                                     <i class="bi bi-hand-thumbs-down-fill"></i>
                                                 </button>
-                                                <Badge bg='danger' className='ms-1'>0</Badge>
+                                                <Badge bg='danger' className='ms-1'>{comment.dislikes}</Badge>
                                             </div>
                                         </div>
                                     </li>     

@@ -12,9 +12,16 @@ class CreateReply extends Component {
         super(props);
         this.state = { 
             body: '',
+            //Issue should be here
             commentId: this.props.commentId
          }
     }
+
+    componentWillReceiveProps(nextProps){
+        if (nextProps.commentId !== this.props.commentId) {
+          this.setState({ commentId: nextProps.commentId })
+        }
+      }
 
     handleChange = (event) => {
         this.setState({
@@ -28,7 +35,7 @@ class CreateReply extends Component {
         this.props.createReply(this.state)
         this.setState({
             body: '',
-            commentId: null
+            
         })
     }
 

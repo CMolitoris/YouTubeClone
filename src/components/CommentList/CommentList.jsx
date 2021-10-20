@@ -48,6 +48,7 @@ const CommentList = (props) => {
                                                 <hr className=''/>
                                                 <div className='h5'>
                                                     <ReplyList replies={props.replies} commentId={comment.id}/>
+                                                    {/* Stays set to the commentId until refreshed */}
                                                     <CreateReply createReply={props.createReply} commentId={comment.id}/>
                                                 </div>
                                             </div>
